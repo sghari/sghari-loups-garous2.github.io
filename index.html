@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loups-Garous - Gestionnaire de Partie</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Dancing+Script:wght@600&family=Open+Sans:wght@400;600&family=Orbitron:wght@400;600;800&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Loups-Garous</h1>
+            <p class="subtitle">mel janoub ya kabdi</p>
+        </header>
+
+        <main>
+            <section id="player-entry">
+                <h2>Ajouter des Joueurs</h2>
+                <form id="player-form">
+                    <div class="input-group">
+                        <input type="text" id="player-name" placeholder="Nom du joueur" maxlength="30" required>
+                        <button type="submit" class="btn-primary">Ajouter</button>
+                    </div>
+                    <div class="player-count">
+                        <span id="current-players">0</span>/20 joueurs
+                    </div>
+                </form>
+            </section>
+
+            <section id="player-list">
+                <h2>Liste des Joueurs</h2>
+                <ul class="players-container"></ul>
+            </section>
+
+            <section id="game-controls">
+                <h2>Contrôles du Jeu</h2>
+                <div class="controls-container">
+                    <button id="assign-roles" class="btn-primary">Distribuer les Rôles</button>
+                    <button id="reset-game" class="btn-secondary">Nouvelle Partie</button>
+                </div>
+            </section>
+
+            <section id="role-distribution">
+                <h2>Distribution des Rôles</h2>
+                <div class="roles-container"></div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Attribution des Rôles</h2>
+            <div id="role-assignments"></div>
+        </div>
+    </div>
+
+    <script src="js/roles.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

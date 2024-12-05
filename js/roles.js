@@ -10,15 +10,6 @@ const ROLES = {
             16: 4  // 16-20 players: 4 werewolves
         }
     },
-    VILLAGER: {
-        name: 'Villageois',
-        team: 'villagers',
-        description: 'Doit découvrir qui sont les Loups-Garous',
-        minPlayers: 8,
-        scaling: {
-            8: 1
-        }
-    },
     SEER: {
         name: 'Voyante',
         team: 'villagers',
@@ -163,6 +154,7 @@ const calculateRoleDistribution = (playerCount) => {
 
     // Optimize villager distribution
     if (remainingSlots > 0) {
+        // First, try to add more werewolves if needed
         const currentWerewolves = distribution.get('WEREWOLF');
         const maxAdditionalWerewolves = Math.min(
             Math.floor(remainingSlots / 4),
@@ -174,8 +166,21 @@ const calculateRoleDistribution = (playerCount) => {
             remainingSlots -= maxAdditionalWerewolves;
         }
 
+        // Distribute remaining slots among special roles
         if (remainingSlots > 0) {
-            distribution.set('VILLAGER', remainingSlots);
+            const availableRoles = ['SEER', 'WITCH', 'HUNTER', 'CUPID', 'ALIEN'];
+            let roleIndex = 0;
+            
+            while (remainingSlots > 0 && roleIndex < availableRoles.length) {
+                const role = availableRoles[roleIndex];
+                const currentCount = distribution.get(role) || 0;
+                
+                // Add one more of the current role
+                distribution.set(role, currentCount + 1);
+                remainingSlots--;
+                
+                roleIndex = (roleIndex + 1) % availableRoles.length;
+            }
         }
     }
 

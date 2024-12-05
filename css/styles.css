@@ -382,6 +382,32 @@ input[type="text"]::placeholder {
     backdrop-filter: blur(10px);
     display: none;
     z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+#role-assignments {
+    max-height: 70vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.role-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal.show {
@@ -400,15 +426,6 @@ input[type="text"]::placeholder {
         transform: translateY(0);
         opacity: 1;
     }
-}
-
-.modal-content {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.98) 100%);
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(33, 150, 243, 0.2);
-    box-shadow: 0 10px 30px rgba(33, 150, 243, 0.1),
-                0 0 20px rgba(255, 152, 0, 0.1);
-    animation: modalSlideIn 0.4s ease-out;
 }
 
 .modal h2 {
@@ -485,8 +502,18 @@ input[type="text"]::placeholder {
 
     .modal-content {
         width: 95%;
-        margin: 20px auto;
-        padding: 1rem;
+        margin: 10px auto;
+        padding: 1.5rem;
+    }
+
+    #role-assignments {
+        max-height: 60vh;
+        padding-right: 10px;
+        margin: 0 -10px 0 0;
+    }
+
+    .role-item {
+        padding: 0.8rem;
     }
 
     section {
